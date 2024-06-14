@@ -18,16 +18,17 @@ export default function TextArea(props) {
     setText("")
     console.log(text.length)
   }
+ 
   
   return (
     <>
-<div className="mb-3 my-4">
+<div className="mb-3 my-4" data-bs-theme={props.mode.toLowerCase()} >
   <label htmlFor="exampleFormControlTextarea1" className="form-label my-4">{props.heading}</label>
-  <textarea className="form-control" id="exampleFormControlTextarea1" rows="8" value={text} onChange={handleOnChange}/>
-  <button className="btn btn-primary my-4" onClick={handleOnClickUC}>Submit</button>
-  <button className="btn btn-dark my-4" onClick={handleOnClickCT}>Clear Text</button>
+  <textarea className="form-control" id="exampleFormControlTextarea1" rows="8" value={text} onChange={handleOnChange} style={{borderWidth:1,borderColor:(props.mode==="Light")?"black":"", margin:5}} />
+  <button className={`btn btn-${props.mode.toLowerCase()} my-4 mx-2`}  onClick={handleOnClickUC} style={{borderWidth:1,borderColor:(props.mode==="Light")?"black":"", margin:5}}>Submit</button>
+  <button className={`btn btn-${props.mode.toLowerCase()} my-4 mx-2`}  onClick={handleOnClickCT} style={{borderWidth:1,borderColor:(props.mode==="Light")?"black":""}}>Clear Text</button>
 
-  <p>Words-{wordCount} Character-{text.length}</p>
+  <p style={{color:(props.mode==="Light")?"black":"white"}}>Words-{wordCount} Character-{text.length}</p>
 </div>
     </>
   )
